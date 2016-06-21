@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2016 12:09:31 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.TipoContacto" table="tipo_contacto" catalog="servici1_polizasnomina" optimistic-lock="version">
+        <id name="idTipoContacto" type="java.lang.Byte">
+            <column name="idTipoContacto" />
+            <generator class="identity" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="50" />
+        </property>
+        <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idTipoContacto" not-null="true" />
+            </key>
+            <one-to-many class="models.Solicitud" />
+        </set>
+    </class>
+</hibernate-mapping>

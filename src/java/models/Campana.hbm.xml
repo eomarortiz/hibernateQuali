@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2016 12:09:31 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Campana" table="campana" catalog="servici1_polizasnomina" optimistic-lock="version">
+        <id name="idCampana" type="java.lang.Integer">
+            <column name="idCampana" />
+            <generator class="identity" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <set name="ejecutivos" table="ejecutivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCampana" not-null="true" />
+            </key>
+            <one-to-many class="models.Ejecutivo" />
+        </set>
+        <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCampana" not-null="true" />
+            </key>
+            <one-to-many class="models.Solicitud" />
+        </set>
+        <set name="paginas" table="pagina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idCampana" not-null="true" />
+            </key>
+            <one-to-many class="models.Pagina" />
+        </set>
+    </class>
+</hibernate-mapping>

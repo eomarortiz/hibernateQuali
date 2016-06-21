@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2016 12:09:31 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Area" table="area" catalog="servici1_polizasnomina" optimistic-lock="version">
+        <id name="idArea" type="java.lang.Byte">
+            <column name="idArea" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreArea" type="string">
+            <column name="nombreArea" length="50" not-null="true" />
+        </property>
+        <property name="descripcionArea" type="string">
+            <column name="descripcionArea" />
+        </property>
+        <set name="ejecutivos" table="ejecutivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idArea" />
+            </key>
+            <one-to-many class="models.Ejecutivo" />
+        </set>
+    </class>
+</hibernate-mapping>

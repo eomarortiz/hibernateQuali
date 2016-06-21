@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <h:head>
+        
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+                
+                
+                <h3>Cotiza tu seguro con Qualitas</h3>
+        <h:form>
+            <p:growl id="msgs" showDetail="true" />
+
+            <p:panel header="Datos personales" style="margin-bottom:10px;">
+                <h:panelGrid columns="2" cellpadding="5">
+
+                    <p:outputLabel for="cp" value="Codigo postal: " />
+                    <p:inputMask id="cp" value="#{categoriaBn.solicitud.cp}" mask="99999" required="true" requiredMessage="Ingresa tu codigo postal"/>
+
+
+                    <p:outputLabel for="marca" value="Marca: " />
+                    
+                    <p:selectOneMenu id="marca" value="" style="width:188px">
+                        <f:selectItems value="#{categoriaBn.externas}" var="m"  itemLabel="#{m.nombre}" itemValue="#{m.clave}" />
+                        <p:ajax update="submarca" />
+                    </p:selectOneMenu>
+                    
+
+                    <p:outputLabel for="anio" value="Año: " />
+                    <p:selectOneMenu id="anio"  style="width:188px" value="#{categoriaBn.anios}" required="true" requiredMessage="Ingresa el año">
+                        <f:selectItems value="#{categoriaBn.anios}" var="c" itemLabel="#{c}" itemValue="#{c}" />
+                    </p:selectOneMenu>
+                    
+                    
+                    <p:outputLabel for="submarca" value="Submarca: " />
+                    <p:selectOneMenu id="submarca" value="#{categoriaBn.subMarca}" style="width:188px">
+                        <f:selectItems value="#{categoriaBn.subMarca}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idSubmarcaCliente}" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel for="nombre" value="Nombre " />
+                    <p:inputText id="nombre" value="#{categoriaBn.solicitud.nombre}" required="true" requiredMessage="Ingresa tu nombre" />
+
+
+                    <p:outputLabel for="apellidoP" value="Apellido paterno " />
+                    <p:inputText id="apellidoP" value="#{categoriaBn.solicitud.apellidoPaterno}" required="true" requiredMessage="Ingresa tu apellido paterno" />
+
+                    <p:outputLabel for="apellidoM" value="Apellido materno " />
+                    <p:inputText id="apellidoM" value="#{categoriaBn.solicitud.apellidoMaterno}" required="true" requiredMessage="Ingresa tu apellido materno"/>
+
+                    <p:outputLabel for="telefono" value="Telefono" />
+                    <p:inputMask id="telefono" value="#{categoriaBn.solicitud.telefono}" mask="99-99-99-99-99" required="true" requiredMessage="Ingresa tu codigo postal"/>
+
+                    <p:outputLabel for="email" value="Correo electronico:" />
+                    <p:inputText id="email" required="true" label="email" 
+                                 requiredMessage="Ingresa tu email."
+                                 validatorMessage="Formato de email incorrecto"
+                                 value="#{categoriaBn.solicitud.correo}">
+
+                        <f:validateRegex
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+
+                    </p:inputText>
+
+
+                    <p:outputLabel for="genero" value="Genero" />
+                    <p:selectOneRadio id="genero" value="" required="true" requiredMessage="Ingresa tu genero">
+                        <f:selectItem itemLabel="Masculino" itemValue="M" />
+                        <f:selectItem itemLabel="Femenino" itemValue="F" />
+                    </p:selectOneRadio>
+
+
+                    <p:outputLabel for="nacimiento" value="Fecha de solicitud" />
+                    <p:calendar id="nacimiento" value="#{CalendarManagedBean.date}" yearRange="c-100:c+0" locale="es_ES" navigator="true" pattern="yyyy-mm-dd" />
+
+
+
+
+                </h:panelGrid>
+
+                <p:separator />
+
+                <p:commandButton value="Cotizar" update="msgs" icon="ui-icon-check" />
+            </p:panel>
+        </h:form>
+        <p:growl  showDetail="true" showSummary="true" />
+        
+    </h:body>
+
+
+
+</html>
+

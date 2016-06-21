@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/servici1_polizasnomina?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="models/TipoContacto.hbm.xml"/>
+    <mapping resource="models/Aseguradora.hbm.xml"/>
+    <mapping resource="models/Campana.hbm.xml"/>
+    <mapping resource="models/SubmarcaCliente.hbm.xml"/>
+    <mapping resource="models/MarcaCliente.hbm.xml"/>
+    <mapping resource="models/Pagina.hbm.xml"/>
+    <mapping resource="models/Area.hbm.xml"/>
+    <mapping resource="models/Ejecutivo.hbm.xml"/>
+    <mapping resource="models/Solicitud.hbm.xml"/>
+    <mapping resource="models/StatusSolicitud.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

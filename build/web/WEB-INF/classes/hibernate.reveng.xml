@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="servici1_polizasnomina"/>
+  <table-filter match-name="solicitud"/>
+  <table-filter match-name="submarca_cliente"/>
+  <table-filter match-name="campana"/>
+  <table-filter match-name="tipo_contacto"/>
+  <table-filter match-name="pagina"/>
+  <table-filter match-name="aseguradora"/>
+  <table-filter match-name="area"/>
+  <table-filter match-name="status_solicitud"/>
+  <table-filter match-name="ejecutivo"/>
+  <table-filter match-name="marca_cliente"/>
+</hibernate-reverse-engineering>

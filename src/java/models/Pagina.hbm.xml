@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2016 12:09:31 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Pagina" table="pagina" catalog="servici1_polizasnomina" optimistic-lock="version">
+        <id name="idPagina" type="java.lang.Integer">
+            <column name="idPagina" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="aseguradora" class="models.Aseguradora" fetch="select">
+            <column name="idAseguradora" />
+        </many-to-one>
+        <many-to-one name="campana" class="models.Campana" fetch="select">
+            <column name="idCampana" not-null="true" />
+        </many-to-one>
+        <property name="url" type="string">
+            <column name="url" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="16777215" />
+        </property>
+        <property name="status" type="int">
+            <column name="status" not-null="true" />
+        </property>
+        <property name="fechaRegistro" type="timestamp">
+            <column name="fecha_registro" length="19" not-null="true" />
+        </property>
+        <property name="fechaActualizacion" type="timestamp">
+            <column name="fecha_actualizacion" length="19" />
+        </property>
+        <property name="fechaUltimoCorte" type="timestamp">
+            <column name="fechaUltimoCorte" length="19" />
+        </property>
+        <set name="solicituds" table="solicitud" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idPagina" />
+            </key>
+            <one-to-many class="models.Solicitud" />
+        </set>
+    </class>
+</hibernate-mapping>

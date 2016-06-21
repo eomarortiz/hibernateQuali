@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2016 12:09:31 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Aseguradora" table="aseguradora" catalog="servici1_polizasnomina" optimistic-lock="version">
+        <id name="idAseguradora" type="java.lang.Byte">
+            <column name="idAseguradora" />
+            <generator class="identity" />
+        </id>
+        <property name="nombreAseguradora" type="string">
+            <column name="nombreAseguradora" length="50" not-null="true" />
+        </property>
+        <property name="fechaEncuadre" type="date">
+            <column name="fechaEncuadre" length="10" />
+        </property>
+        <set name="paginas" table="pagina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAseguradora" />
+            </key>
+            <one-to-many class="models.Pagina" />
+        </set>
+        <set name="ejecutivos" table="ejecutivo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idAseguradora" />
+            </key>
+            <one-to-many class="models.Ejecutivo" />
+        </set>
+    </class>
+</hibernate-mapping>

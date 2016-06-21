@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/06/2016 12:09:31 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Solicitud" table="solicitud" catalog="servici1_polizasnomina" optimistic-lock="version">
+        <id name="idSolicitud" type="java.lang.Integer">
+            <column name="idSolicitud" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="campana" class="models.Campana" fetch="select">
+            <column name="idCampana" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ejecutivo" class="models.Ejecutivo" fetch="select">
+            <column name="idEjecutivo" />
+        </many-to-one>
+        <many-to-one name="pagina" class="models.Pagina" fetch="select">
+            <column name="idPagina" />
+        </many-to-one>
+        <many-to-one name="statusSolicitud" class="models.StatusSolicitud" fetch="select">
+            <column name="idStatusSolicitud" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoContacto" class="models.TipoContacto" fetch="select">
+            <column name="idTipoContacto" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" not-null="true" />
+        </property>
+        <property name="apellidoPaterno" type="string">
+            <column name="apellidoPaterno" length="80" />
+        </property>
+        <property name="apellidoMaterno" type="string">
+            <column name="apellidoMaterno" length="80" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="50" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="50" not-null="true" />
+        </property>
+        <property name="cp" type="string">
+            <column name="cp" length="10" not-null="true" />
+        </property>
+        <property name="anio" type="date">
+            <column name="anio" length="0" not-null="true" />
+        </property>
+        <property name="marca" type="string">
+            <column name="marca" length="50" not-null="true" />
+        </property>
+        <property name="submarca" type="string">
+            <column name="submarca" length="80" />
+        </property>
+        <property name="modelo" type="string">
+            <column name="modelo" length="100" not-null="true" />
+        </property>
+        <property name="cve" type="string">
+            <column name="cve" length="50" />
+        </property>
+        <property name="cobertura" type="string">
+            <column name="cobertura" />
+        </property>
+        <property name="primaTotal" type="big_decimal">
+            <column name="primaTotal" precision="10" />
+        </property>
+        <property name="comentarios" type="string">
+            <column name="comentarios" length="65535" not-null="true" />
+        </property>
+        <property name="fechaSolicitud" type="timestamp">
+            <column name="fechaSolicitud" length="19" not-null="true" />
+        </property>
+        <property name="fechaNacimiento" type="date">
+            <column name="fechaNacimiento" length="10" />
+        </property>
+        <property name="sexo" type="java.lang.Character">
+            <column name="sexo" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>
